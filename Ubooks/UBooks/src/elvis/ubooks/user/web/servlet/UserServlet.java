@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import cn.itcast.commons.CommonUtils;
 import cn.itcast.servlet.BaseServlet;
+import elvis.ubooks.cart.domain.Cart;
 import elvis.ubooks.user.domain.User;
 import elvis.ubooks.user.service.UserException;
 import elvis.ubooks.user.service.UserService;
@@ -146,6 +147,7 @@ public class UserServlet extends BaseServlet {
 			User user = userService.login(form);
 			request.getSession().invalidate();
 			request.getSession().setAttribute("session_user", user);
+			request.getSession().setAttribute("cart", new Cart());
 			return "r:/index.jsp";
 		} catch (UserException e) {
 			request.setAttribute("msg", e.getMessage());

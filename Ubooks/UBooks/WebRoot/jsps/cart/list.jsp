@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -56,10 +57,10 @@
   <body>
 <h1>购物车</h1>
 
-<table border="1" width="100%" cellspacing="0" background="black">
+<table border="1" width="100%" cellspacing="0" >
 	<tr>
 		<td colspan="7" align="right" style="font-size: 15pt; font-weight: 900">
-			<a href="javascript:alert('已清空购物车！');">清空购物车</a>
+			<a href="<c:url value='/CartServlet?method=clear'/>">清空购物车</a>
 		</td>
 	</tr>
 	<tr>
@@ -71,54 +72,32 @@
 		<th>小计</th>
 		<th>操作</th>
 	</tr>
-
-	<tr>
-		<td><div><img src="<c:url value='/book_img/8758723-1_l.jpg'/>"/></div></td>
-		<td>Java详解</td>
-		<td>张孝祥</td>
-		<td>39.9元</td>
-		<td>2</td>
-		<td>79.8元</td>
-		<td><a href="javascript:alert('删除购物项成功！');">删除</a></td>
-	</tr>
-	<tr>
-		<td><div><img src="<c:url value='/book_img/8991366-1_l.jpg'/>"/></div></td>
-		<td>Java详解</td>
-		<td>张孝祥</td>
-		<td>39.9元</td>
-		<td>2</td>
-		<td>79.8元</td>
-		<td><a href="javascript:alert('删除购物项成功！');">删除</a></td>
-	</tr>
-	<tr>
-		<td><div><img src="<c:url value='/book_img/9265169-1_l.jpg'/>"/></div></td>
-		<td>Java详解</td>
-		<td>张孝祥</td>
-		<td>39.9元</td>
-		<td>2</td>
-		<td>79.8元</td>
-		<td><a href="javascript:alert('删除购物项成功！');">删除</a></td>
-	</tr>
-	<tr>
-		<td><div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>"/></div></td>
-		<td>Java详解</td>
-		<td>张孝祥</td>
-		<td>39.9元</td>
-		<td>2</td>
-		<td>79.8元</td>
-		<td><a href="javascript:alert('删除购物项成功！');">删除</a></td>
-	</tr>
-
-	<tr>
-		<td colspan="7" align="right" style="font-size: 15pt; font-weight: 900">
-			合计：319.2元
-		</td>
-	</tr>
+	<c:choose>
+		<c:when test="${fn:length(sessionScope.cart.cartItems)>0 }">
+			<c:forEach items="${sessionScope.cart.cartItems }" var="item">
+				<tr>
+					<td><div><img src="<c:url value='/${item.book.image}'/>"/></div></td>
+					<td>${item.book.bname }</td>
+					<td>${item.book.author }</td>
+					<td>${item.book.price }元</td>
+					<td>${item.count }</td>
+					<td>${item.subTotal }元</td>
+					<td><a href="<c:url value='/CartServlet?method=delete&bid=${item.book.bid }'/>">删除</a></td>
+				</tr>
+			</c:forEach>
+		
+		<tr>
+			<td colspan="7" align="right" style="font-size: 15pt; font-weight: 900">
+				合计：${sessionScope.cart.total }元
+			</td>
+		</tr>
+		</c:when>
+	</c:choose>
 	<tr>
 		<td colspan="7" align="right" style="font-size: 15pt; font-weight: 900">
 			<a id="buy" href="<c:url value='/jsps/order/desc.jsp'/>"></a>
 		</td>
 	</tr>
-</table>
+	</table>
   </body>
 </html>

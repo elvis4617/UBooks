@@ -60,9 +60,18 @@
     <li>作者：${book.author }</li>
     <li>单价：${book.price }元</li>
   </ul>
-  <form id="form" action="<c:url value='/jsps/cart/list.jsp'/>" method="post">
+  <form id="form" action="<c:url value='/CartServlet'/>" method="post">
+  	<input type="hidden" name="method" value="add"/>
+  	<input type="hidden" name="bid" value=${book.bid }>
   	<input style="margin-left:30px" type="text" size="3" name="count" value="1"/>
   </form>
-  <a href="javascript:document.getElementById('form').submit();"></a>
+  <c:choose>
+  	<c:when test="${empty sessionScope.cart}">
+  		<a href="<c:url value='/jsps/user/login.jsp'/>" target="_parent"></a>
+  	</c:when>
+  	<c:otherwise>
+  		<a href="javascript:document.getElementById('form').submit();"></a>
+  	</c:otherwise>
+  </c:choose>
   </body>
 </html>
