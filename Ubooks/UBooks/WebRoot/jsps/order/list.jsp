@@ -54,181 +54,35 @@
   <body>
 <h1>我的订单</h1>
 
-<table border="1" width="100%" cellspacing="0" background="black">
+<table border="1" width="100%" cellspacing="0" >
 
+<c:forEach items="${orderList }" var="order">
 	<tr bgcolor="gray" bordercolor="gray">
 		<td colspan="6">
-			订单编号：abcdefg　成交时间：2000-01-01 15:30　金额：<font color="red"><b>319.2</b></font>　
+			订单编号：${order.oid }　成交时间：<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${order.orderTime }"/>　金额：<font color="red"><b>${order.total }元</b></font>　
 
 					<a href="<c:url value='/jsps/order/desc.jsp'/>">付款</a>
 
 					等待发货
 					<a href="javascript:alert('已确认收货！');">确认收货</a>
-					订单结束
 		</td>
 	</tr>
-
-	<tr bordercolor="gray" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Java详解</td>
-		<td>单价：39.9元</td>
-		<td>作者：张孝祥</td>
-		<td>数量：2</td>
-		<td>小计：79.8元</td>
-	</tr>
-	<tr bordercolor="gray" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Java详解</td>
-		<td>单价：39.9元</td>
-		<td>作者：张孝祥</td>
-		<td>数量：2</td>
-		<td>小计：79.8元</td>
-	</tr>
-	<tr bordercolor="gray" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Java详解</td>
-		<td>单价：39.9元</td>
-		<td>作者：张孝祥</td>
-		<td>数量：2</td>
-		<td>小计：79.8元</td>
-	</tr>
+	<c:forEach items="${order.orderItems }" var="item">
+		<tr bordercolor="gray" align="center">
+			<td width="15%">
+				<div><img src="<c:url value='/${item.book.image }'/>" height="75"/></div>
+			</td>
+			<td>书名：${item.book.bname }</td>
+			<td>单价：${item.book.price }元</td>
+			<td>作者：${item.book.author }</td>
+			<td>数量：${item.count }</td>
+			<td>小计：${item.subtotal }元</td>
+		</tr>
+	</c:forEach>
+</c:forEach>
 
 
-	<tr bgcolor="gray" bordercolor="gray">
-		<td colspan="6">
-			订单编号：abcdefg　成交时间：2000-01-01 15:30　金额：<font color="red"><b>319.2</b></font>　
-
-					<a href="<c:url value='/jsps/order/desc.jsp'/>">付款</a>
-
-					等待发货
-					<a href="javascript:alert('已确认收货！');">确认收货</a>
-					订单结束
-		</td>
-	</tr>
-
-	<tr bordercolor="gray" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Java详解</td>
-		<td>单价：39.9元</td>
-		<td>作者：张孝祥</td>
-		<td>数量：2</td>
-		<td>小计：79.8元</td>
-	</tr>
-	<tr bordercolor="gray" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Java详解</td>
-		<td>单价：39.9元</td>
-		<td>作者：张孝祥</td>
-		<td>数量：2</td>
-		<td>小计：79.8元</td>
-	</tr>
-	<tr bordercolor="gray" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Java详解</td>
-		<td>单价：39.9元</td>
-		<td>作者：张孝祥</td>
-		<td>数量：2</td>
-		<td>小计：79.8元</td>
-	</tr>
-
-	<tr bgcolor="gray" bordercolor="gray">
-		<td colspan="6">
-			订单编号：abcdefg　成交时间：2000-01-01 15:30　金额：<font color="red"><b>319.2</b></font>　
-
-					<a href="<c:url value='/jsps/order/desc.jsp'/>">付款</a>
-
-					等待发货
-					<a href="javascript:alert('已确认收货！');">确认收货</a>
-					订单结束
-		</td>
-	</tr>
-
-	<tr bordercolor="gray" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Java详解</td>
-		<td>单价：39.9元</td>
-		<td>作者：张孝祥</td>
-		<td>数量：2</td>
-		<td>小计：79.8元</td>
-	</tr>
-	<tr bordercolor="gray" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Java详解</td>
-		<td>单价：39.9元</td>
-		<td>作者：张孝祥</td>
-		<td>数量：2</td>
-		<td>小计：79.8元</td>
-	</tr>
-	<tr bordercolor="gray" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Java详解</td>
-		<td>单价：39.9元</td>
-		<td>作者：张孝祥</td>
-		<td>数量：2</td>
-		<td>小计：79.8元</td>
-	</tr>
-
-	<tr bgcolor="gray" bordercolor="gray">
-		<td colspan="6">
-			订单编号：abcdefg　成交时间：2000-01-01 15:30　金额：<font color="red"><b>319.2</b></font>　
-
-					<a href="<c:url value='/jsps/order/desc.jsp'/>">付款</a>
-
-					等待发货
-					<a href="javascript:alert('已确认收货！');">确认收货</a>
-					订单结束
-		</td>
-	</tr>
-
-	<tr bordercolor="gray" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Java详解</td>
-		<td>单价：39.9元</td>
-		<td>作者：张孝祥</td>
-		<td>数量：2</td>
-		<td>小计：79.8元</td>
-	</tr>
-	<tr bordercolor="gray" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Java详解</td>
-		<td>单价：39.9元</td>
-		<td>作者：张孝祥</td>
-		<td>数量：2</td>
-		<td>小计：79.8元</td>
-	</tr>
-	<tr bordercolor="gray" align="center">
-		<td width="15%">
-			<div><img src="<c:url value='/book_img/9317290-1_l.jpg'/>" height="75"/></div>
-		</td>
-		<td>书名：Java详解</td>
-		<td>单价：39.9元</td>
-		<td>作者：张孝祥</td>
-		<td>数量：2</td>
-		<td>小计：79.8元</td>
-	</tr>
-
+	
 </table>
   </body>
 </html>

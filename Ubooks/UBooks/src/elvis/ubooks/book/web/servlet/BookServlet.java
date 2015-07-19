@@ -40,7 +40,6 @@ public class BookServlet extends BaseServlet {
 	public String search(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String text = request.getParameter("critaria");
-		System.out.println(text);
 		try {
 			List<Book> bookList = bookService.search(text);
 			request.setAttribute("bookList", bookList);

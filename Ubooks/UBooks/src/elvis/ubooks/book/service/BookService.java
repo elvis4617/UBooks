@@ -25,7 +25,6 @@ public class BookService {
 		//not completed
 		List<Book> bookList = bookDao.search(text);
 		if(bookList.isEmpty()){
-			System.out.println("epty");
 			throw new BookException("No Result");
 		}
 		return bookList;

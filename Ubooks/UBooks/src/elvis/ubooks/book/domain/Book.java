@@ -10,6 +10,22 @@ public class Book {
 	private String image;
 	private Category category;
 
+	
+	public Book() {
+		super();
+	}
+
+	public Book(String bid, String bname, double price, String author,
+			String image, Category category) {
+		super();
+		this.bid = bid;
+		this.bname = bname;
+		this.price = price;
+		this.author = author;
+		this.image = image;
+		this.category = category;
+	}
+
 	public String getBid() {
 		return bid;
 	}
