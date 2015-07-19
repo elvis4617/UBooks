@@ -14,19 +14,32 @@
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	
+	<!-- CSS -->
+    <link rel="stylesheet" href="<c:url value='/jsps/user/login-assets/css/reset.css'/>">
+    <link rel="stylesheet" href="<c:url value='/jsps/user/login-assets/css/supersized.css'/>">
+    <link rel="stylesheet" href="<c:url value='/jsps/user/login-assets/css/style.css'/>">
+
+	<!-- Javascript -->
+	<script type="text/javascript" src="<c:url value='/jsps/user/login-assets/js/jquery-1.8.2.min.js'/>" ></script>
+    <script type="text/javascript" src="<c:url value='/jsps/user/login-assets/js/supersized.3.2.7.min.js'/>" ></script>
+    <script type="text/javascript" src="<c:url value='/jsps/user/login-assets/js/supersized-init.js'/>" ></script>
+    <script type="text/javascript" src="<c:url value='/jsps/user/login-assets/js/scripts.js'/>" ></script>
 
   </head>
   
   <body>
-  <h1>登录</h1>
-<p style="color: red; font-weight: 900">${msg }</p>
-<form action="<c:url value='/jsps/main.jsp'/>" method="post">
-	用户名：<input type="text" name="username" value=""/><br/>
-	密　码：<input type="password" name="password"/><br/>
-	<input type="submit" value="登录"/>
-</form>
+  	<div class="page-container">
+           <h1>Login</h1>
+           <p style="color: red; font-weight: 900">${msg }</p>
+            <form action="<c:url value='/UserServlet'/>" method="post">
+            	<input type="hidden" name="method" value="login"/>	
+                <input type="text" name="username" class="username" value="${form.username }"/>
+                <input type="password" name="password" class="password" />
+                 <input type="Captcha" class="Captcha" name="Captcha" />
+                <button type="submit" class="submit_button">Login</button>
+                <div class="error"><span>+</span></div>
+            </form> 
+     </div>
   </body>
 </html>

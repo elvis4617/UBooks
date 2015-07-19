@@ -20,10 +20,14 @@
   
   <body>
 <h1>${msg }</h1>
-<ul>
-  <li><a href="<c:url value='/index.jsp'/>">Ö÷Ò³</a></li>
-  <li><a href="<c:url value='/jsps/user/login.jsp'/>">µÇÂ¼</a></li>
-  <li><a href="<c:url value='/jsps/user/regist.jsp'/>">×¢²á</a></li>
-</ul>
+	<c:choose>
+		<c:when test="${empty sessionScope.session_user}">
+			<ul>
+			  <li><a href="<c:url value='/index.jsp'/>" target="_parent">index</a></li>
+			  <li><a href="<c:url value='/jsps/user/login.jsp'/>" target="_parent">login</a></li>
+			  <li><a href="<c:url value='/jsps/user/regist.jsp'/>" target="_parent">register</a></li>
+			</ul>
+		</c:when>
+	</c:choose>
   </body>
 </html>

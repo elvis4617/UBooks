@@ -42,14 +42,14 @@
   
   <body>
 <table class="table" align="center">
-	<tr style="background: #4682B4; height: 120px; ">
+	<tr style="background: #4682B4; height: 190px; ">
 		<td colspan="2" align="center">
 			<iframe frameborder="0" src="<c:url value='/jsps/top.jsp'/>" name="top"></iframe>
 		</td>
 	</tr>
 	<tr>
 		<td width="120" style="padding:5px;" align="center" valign="top">
-			<iframe frameborder="0" width="120" src="<c:url value='/jsps/left.jsp'/>" name="left"></iframe>
+			<iframe frameborder="0" width="120" src="<c:url value='/CategoryServlet?method=findAllCategory'/>" name="left"></iframe>
 		</td>
 		<td>
 			<iframe frameborder="0" src="<c:url value='/jsps/body.jsp'/>" name="body"></iframe>

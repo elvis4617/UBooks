@@ -53,16 +53,25 @@
   
   <body>
   <div>
-    <img src="<c:url value='/book_img/8758723-1_l.jpg'/>" border="0"/>
+    <img src="<c:url value='/${book.image }'/>" border="0"/>
   </div>
   <ul>
-    <li>书名：Java开发详解</li>
-    <li>作者：张孝祥</li>
-    <li>单价：39.9元</li>
+    <li>书名：${book.bname }</li>
+    <li>作者：${book.author }</li>
+    <li>单价：${book.price }元</li>
   </ul>
-  <form id="form" action="<c:url value='/jsps/cart/list.jsp'/>" method="post">
-  	<input type="text" size="3" name="count" value="1"/>
+  <form id="form" action="<c:url value='/CartServlet'/>" method="post">
+  	<input type="hidden" name="method" value="add"/>
+  	<input type="hidden" name="bid" value=${book.bid }>
+  	<input style="margin-left:30px" type="text" size="3" name="count" value="1"/>
   </form>
-  <a href="javascript:document.getElementById('form').submit();"></a>
+  <c:choose>
+  	<c:when test="${empty sessionScope.cart}">
+  		<a href="<c:url value='/jsps/user/login.jsp'/>" target="_parent"></a>
+  	</c:when>
+  	<c:otherwise>
+  		<a href="javascript:document.getElementById('form').submit();"></a>
+  	</c:otherwise>
+  </c:choose>
   </body>
 </html>
