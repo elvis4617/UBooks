@@ -13,26 +13,25 @@
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-<style type="text/css">
-	body {
-		background: #4682B4; 
-	}
-	a {
-		text-transform:none;
-		text-decoration:none;
-	} 
-	a:hover {
-		text-decoration:underline;
-	}
-</style>
+	
+	<link rel="stylesheet" href="<c:url value='/jsps/css/style.css'/>" media="screen" type="text/css" />
+	<style type="text/css">
+		body {
+			background: #4682B4; 
+		}
+		a {
+			text-transform:none;
+			text-decoration:none;
+		} 
+		a:hover {
+			text-decoration:underline;
+		}
+	</style>
   </head>
   
   <body>
-<h1 style="text-align: center;">ITCAST书店</h1>
-<div style="font-size: 10pt;">
+	<h1 style="text-align: center;">ITCAST书店</h1>
+	<div style="font-size: 10pt;">
 
 		<c:choose>
 			<c:when test="${empty sessionScope.session_user }">
@@ -46,8 +45,20 @@
 				<a href="<c:url value='/UserServlet?method=exit'/>" target="_parent">退出</a>
 			</c:otherwise>
 		</c:choose>
+		<br/>
+		<div class="panel"> 
+		<form action="<c:url value='/BookServlet'/>" method="post">
+			<input type="hidden" name="method" value="search"/>
+  			<div class="wrap">
+    			<input type="text" placeholder="Your secrets here" name="critaria"/>
+    			<input class="btn" type="submit" value="Search" target="body"/>
+  			</div>
+  		</form>
+		</div>
 		
-		
-</div>
+		<div style="text-align:center;clear:both">
+
+		</div>
+	</div>
   </body>
 </html>

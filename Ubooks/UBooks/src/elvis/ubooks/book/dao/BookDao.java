@@ -39,4 +39,14 @@ public class BookDao {
 			throw new RuntimeException(e);
 		}
 	}
+
+	public List<Book> search(String text) {
+		try{
+			String sql = "select * from book where bname like ?";
+			text = "%" + text + "%";
+			return qr.query(sql, new BeanListHandler<Book>(Book.class),text);
+		}catch(SQLException e){
+			throw new RuntimeException(e);
+		}
+	}
 }

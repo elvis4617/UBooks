@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import cn.itcast.servlet.BaseServlet;
 import elvis.ubooks.book.domain.Book;
+import elvis.ubooks.book.domain.BookException;
 import elvis.ubooks.book.service.BookService;
 
 public class BookServlet extends BaseServlet {
@@ -35,6 +36,21 @@ public class BookServlet extends BaseServlet {
 		request.setAttribute("book", book);
 		return "f:/jsps/book/desc.jsp";
 	}
+
+	public String search(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String text = request.getParameter("critaria");
+		System.out.println(text);
+		try {
+			List<Book> bookList = bookService.search(text);
+			request.setAttribute("bookList", bookList);
+			return "f:/jsps/book/list.jsp";
+		} catch (BookException e) {
+			request.setAttribute("msg", e.getMessage());
+			return "f:/jsps/book/list.jsp";
+		}
+	}
+	
 	
 	
 }

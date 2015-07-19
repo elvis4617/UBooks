@@ -31,7 +31,7 @@
   </head>
   
   <body>
-
+	<h1>${msg }</h1>
 	<c:forEach items="${bookList }" var="book">
 	  <div class="icon">
 	    <a href="<c:url value='/BookServlet?method=loadBook&bid=${book.bid }'/>"><img src="<c:url value='/${book.image }'/>" border="0"/></a>
