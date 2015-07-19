@@ -29,4 +29,12 @@ public class BookService {
 		}
 		return bookList;
 	}
+
+	public void modifyBook(Book book) {
+		bookDao.modify(book);
+	}
+
+	public void deleteBook(Book book) {
+		bookDao.delete(book.getBid());
+	}
 }

@@ -35,7 +35,7 @@
   <body style="background: rgb(254,238,189);">
 <h1>我的订单</h1>
 
-<table border="1" width="100%" cellspacing="0" background="black">
+<table border="1" width="100%" cellspacing="0" >
 	<tr bgcolor="rgb(78,78,78)" bordercolor="rgb(78,78,78)" style="color: white;">
 		<td colspan="6">
 			订单：8691b4150a0641e7a8729fd5e668820c　成交时间：2013-06-04 15:56:53　金额：<font color="red"><b>126.4</b></font>	已收货（完成）

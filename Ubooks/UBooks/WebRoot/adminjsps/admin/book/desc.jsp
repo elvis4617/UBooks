@@ -16,41 +16,47 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-<style type="text/css">
-	body {
-		font-size: 10pt;
-		background: rgb(254,238,189);
-	}
-	div {
-		margin:20px;
-		border: solid 2px gray;
-		width: 150px;
-		height: 150px;
-		text-align: center;
-	}
-	li {
-		margin: 10px;
-	}
-</style>
+	<style type="text/css">
+		body {
+			font-size: 10pt;
+			background: rgb(254,238,189);
+		}
+		div {
+			margin:20px;
+			border: solid 2px gray;
+			width: 150px;
+			height: 150px;
+			text-align: center;
+		}
+		li {
+			margin: 10px;
+		}
+	</style>
   </head>
   
   <body>
   <div>
-    <img src="<c:url value='/book_img/20029394-1_l.jpg'/>" border="0"/>
+    <img src="<c:url value='/${book.image }'/>" border="0"/>
   </div>
-  <form style="margin:20px;" id="form" action="javascript:alert('操作成功！');" method="post">
-  	图书名称：<input type="text" name="bname" value="精通Spring2.x"/><br/>
-  	图书单价：<input type="text" name="price" value="63.2元"/><br/>
-  	图书作者：<input type="text" name="author" value="陈华雄"/><br/>
-  	图书分类：<select style="width: 150px; height: 20px;" name="cid">
-     		<option value="">JavaSE</option>
-    		<option value="">JavaEE</option>
-			<option value="">JavaScript</option>
-			<option value="">Hibernate</option>
-			<option value="">Struts</option>
-			<option value="" selected='selected'>Spring</option>
+  <form style="margin:20px;" id="form" action="<c:url value='/admin/AdminBookServlet'/>" method="post">
+  			<input type="hidden" name="bid" value="${book.bid }"/>
+  	图书名称：<input type="text" name="bname" value="${book.bname }"/><br/>
+  	图书单价：<input type="text" name="price" value="${book.price }"/><br/>
+  	图书作者：<input type="text" name="author" value="${book.author }"/><br/>
+  	图书分类：<select name="cid" style="width: 150px; height: 20px;" name="cid">
+  				<c:forEach items="${categoryList }" var="category">
+	  				<c:choose>
+	  					<c:when test="${category.cname eq book.category.cname }">
+		     				<option value="${category.cid }" selected='selected'>${book.category.cname}</option>
+		     			</c:when>
+		     			<c:otherwise>
+		     				<option value="${category.cid }">${category.cname }</option>
+		     			</c:otherwise>
+		     		</c:choose>
+				</c:forEach>
+				
     	</select><br/>
-  	<input type="submit" name="method" value="del" onclick="return confirm('是否真要删除该图书？');"/>
+  	<input type="submit" name="method" value="del" onclick="return confirm('confirm delete?');"/>
   	<input type="submit" name="method" value="mod"/>
   </form>
   </body>

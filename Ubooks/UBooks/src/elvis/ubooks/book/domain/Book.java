@@ -9,14 +9,14 @@ public class Book {
 	private String author;
 	private String image;
 	private Category category;
+	private boolean del;
 
-	
 	public Book() {
 		super();
 	}
 
 	public Book(String bid, String bname, double price, String author,
-			String image, Category category) {
+			String image, Category category, boolean del) {
 		super();
 		this.bid = bid;
 		this.bname = bname;
@@ -24,6 +24,15 @@ public class Book {
 		this.author = author;
 		this.image = image;
 		this.category = category;
+		this.del = del;
+	}
+
+	public boolean isDel() {
+		return del;
+	}
+
+	public void setDel(boolean del) {
+		this.del = del;
 	}
 
 	public String getBid() {
