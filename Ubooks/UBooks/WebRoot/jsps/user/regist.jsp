@@ -23,7 +23,7 @@
   <body>
   <h1>注册</h1>
 <p style="color: red; font-weight: 900">${msg }</p>
-<form action="<c:url value='/UserServlet'/>" method="post">
+<form action="<c:url value='/jsps/user/UserServlet'/>" method="post">
 	<input type="hidden" name="method" value="register"/>
 	用户名：<input type="text" name="username" value="${form.username }"/>
 	<span style="color: red; font-weight: 900">${errors.username }</span>
