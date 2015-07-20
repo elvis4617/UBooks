@@ -25,6 +25,7 @@ import elvis.ubooks.user.service.UserException;
 import elvis.ubooks.user.service.UserService;
 
 public class UserServlet extends BaseServlet {
+	private static final long serialVersionUID = 8572425689959507781L;
 	private UserService userService = new UserService();
 
 	public String register(HttpServletRequest request, HttpServletResponse response)
@@ -59,6 +60,7 @@ public class UserServlet extends BaseServlet {
 		form.setUid(CommonUtils.uuid());
 		form.setCode(CommonUtils.uuid() + CommonUtils.uuid());
 		form.setState(false);
+		form.setAdmin(false);
 		
 		
 		try {

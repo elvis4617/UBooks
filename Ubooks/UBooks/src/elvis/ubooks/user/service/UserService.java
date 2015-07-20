@@ -27,6 +27,15 @@ public class UserService {
 		else if(!user.getPassword().equals(form.getPassword()))
 			throw new UserException("username or password wrong");
 		return user;
+	}
+	
+	public User adminLogin(User form) throws UserException{
+		User user = userDao.findByUsername(form.getUsername());
+		if(user == null) throw new UserException("Access denied, username and password don't match");
+		else if(!user.isState()) throw new UserException("Access denied, account not activated");
+		else if(!user.isAdmin()) throw new UserException("Access denied, unauthrized");
+		else if(!user.getPassword().equals(form.getPassword())) throw new UserException("Access denied, username and password don't match");
+		return user;
 		
 	}
 }

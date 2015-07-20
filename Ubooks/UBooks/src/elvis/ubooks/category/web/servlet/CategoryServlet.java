@@ -10,6 +10,8 @@ import cn.itcast.servlet.BaseServlet;
 import elvis.ubooks.category.service.CategoryService;
 
 public class CategoryServlet extends BaseServlet {
+	private static final long serialVersionUID = 5756677955604271393L;
+	
 	private CategoryService categoryService = new CategoryService();
 
 	public String findAllCategory(HttpServletRequest request, HttpServletResponse response)

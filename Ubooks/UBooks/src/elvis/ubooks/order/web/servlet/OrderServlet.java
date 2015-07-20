@@ -20,6 +20,7 @@ import elvis.ubooks.order.orderService.OrderService;
 import elvis.ubooks.user.domain.User;
 
 public class OrderServlet extends BaseServlet {
+	private static final long serialVersionUID = -4434543081058307264L;
 	private OrderService orderService = new OrderService();
 
 	public String addOrder(HttpServletRequest request, HttpServletResponse response)
@@ -62,6 +63,8 @@ public class OrderServlet extends BaseServlet {
 	public String myOrders(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		User user = (User)request.getSession().getAttribute("session_user");
+		/*if(user == null)
+			return "r:/jsps/user/login.jsp";*/
 		String uid = user.getUid();
 		List<Order> orderList = orderService.loadOrderByUid(uid);
 		request.setAttribute("orderList", orderList);

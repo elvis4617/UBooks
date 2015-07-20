@@ -13,7 +13,6 @@ import org.apache.commons.dbutils.handlers.MapListHandler;
 import cn.itcast.commons.CommonUtils;
 import cn.itcast.jdbc.TxQueryRunner;
 import elvis.ubooks.book.domain.Book;
-import elvis.ubooks.category.service.CategoryService;
 import elvis.ubooks.order.domain.Order;
 import elvis.ubooks.order.domain.OrderItem;
 
@@ -98,6 +97,18 @@ public class OrderDao {
 		Book book = CommonUtils.toBean(m, Book.class);
 		item.setBook(book);
 		return item;
+	}
+
+	public List<Order> loadOrders() {
+		try{
+			String sql = "select * from orders";
+			List<Order> orderList = qr.query(sql, new BeanListHandler<Order>(Order.class));
+			for(Order o: orderList)
+				loadOrderItems(o);
+			return orderList;
+		}catch(SQLException e){
+			throw new RuntimeException(e);
+		}
 	}
 		
 }

@@ -19,6 +19,11 @@
   
   <body style="background: rgb(78,78,78);color: white;">
 <h1 style="text-align: center; ">ITCAST网络图书商城后台管理</h1>
-<p style="font-size: 11pt;">管理员：张三</p>
+<p style="font-size: 11pt;">管理员：${sessionScope.session_admin.username }</p> 
+<c:choose>
+	<c:when test="${not empty sessionScope.session_admin }">
+		<a href="<c:url value='/adminjsps/AdminServlet?method=logout'/>">Logout</a>
+	</c:when>
+</c:choose>
   </body>
 </html>

@@ -13,6 +13,7 @@ import elvis.ubooks.category.domain.CategoryException;
 import elvis.ubooks.category.service.CategoryService;
 
 public class AdminCategoryServlet extends BaseServlet {
+	private static final long serialVersionUID = -183298064672218300L;
 	private CategoryService categoryService = new CategoryService();
 	
 	public String findAllCategory(HttpServletRequest request, HttpServletResponse response)

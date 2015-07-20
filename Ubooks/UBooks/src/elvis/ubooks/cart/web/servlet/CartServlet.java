@@ -11,6 +11,8 @@ import elvis.ubooks.cart.domain.Cart;
 
 public class CartServlet extends BaseServlet {
 
+	private static final long serialVersionUID = 6672396514660893930L;
+
 	public String add(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String bid = request.getParameter("bid");

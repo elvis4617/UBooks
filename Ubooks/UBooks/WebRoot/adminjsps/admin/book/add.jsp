@@ -22,8 +22,7 @@
   <body>
     <h1>添加图书</h1>
     <p style="font-weight: 900; color: red">${msg }</p>
-    <form action="<c:url value='/admin/AdminBookServlet'/>" method="post" enctype="multipart/form-data">
-   				<input type="hidden" name="method" value="upload"/>
+    <form action="<c:url value='/admin/UploadServlet'/>" method="post" enctype="multipart/form-data">
     	图书名称：<input style="width: 150px; height: 20px;" type="text" name="bname" value="${book.bname }"/><br/>
     	图书图片：<input style="width: 223px; height: 20px;" type="file" name="image" /><br/>
     	图书单价：<input style="width: 150px; height: 20px;" type="text" name="price" value="${book.price }"/><br/>

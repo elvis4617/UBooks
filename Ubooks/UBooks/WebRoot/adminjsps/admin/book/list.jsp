@@ -33,7 +33,7 @@
   <c:forEach items="${bookList }" var="book">
 	  <body>
 	   <div class="icon">
-	    <a href="<c:url value='/admin/AdminBookServlet?method=loadBook&bid=${book.bid }'/>"><img src="<c:url value='/${book.image }'/>" border="0"/></a>
+	    <a href="<c:url value='/admin/AdminBookServlet?method=loadBook&bid=${book.bid }'/>"><img src="<c:url value='/${book.image }'/>" border="0" width="130px" height="170px"/></a>
 	      <br/>
 	   	<a href="<c:url value='/admin/AdminBookServlet?method=loadBook&bid=${book.bid }'/>">${book.bname }</a>
 	  </div>

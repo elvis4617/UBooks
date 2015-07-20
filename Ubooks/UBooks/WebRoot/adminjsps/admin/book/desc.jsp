@@ -36,7 +36,7 @@
   
   <body>
   <div>
-    <img src="<c:url value='/${book.image }'/>" border="0"/>
+    <img src="<c:url value='/${book.image }'/>" border="0" width="130px" height="170px"/>
   </div>
   <form style="margin:20px;" id="form" action="<c:url value='/admin/AdminBookServlet'/>" method="post">
   			<input type="hidden" name="bid" value="${book.bid }"/>

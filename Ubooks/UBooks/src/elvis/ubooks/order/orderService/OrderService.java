@@ -7,7 +7,6 @@ import cn.itcast.jdbc.JdbcUtils;
 import elvis.ubooks.order.dao.OrderDao;
 import elvis.ubooks.order.domain.Order;
 import elvis.ubooks.order.domain.OrderException;
-import elvis.ubooks.order.domain.OrderItem;
 
 public class OrderService {
 	private OrderDao orderDao = new OrderDao();
@@ -31,6 +30,10 @@ public class OrderService {
 
 	public List<Order> loadOrderByUid(String uid) {
 		return orderDao.loadOrderByUid(uid);
+	}
+
+	public Object loadOrders() {
+		return orderDao.loadOrders();
 	}
 
 	

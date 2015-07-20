@@ -13,6 +13,7 @@ import elvis.ubooks.book.domain.BookException;
 import elvis.ubooks.book.service.BookService;
 
 public class BookServlet extends BaseServlet {
+	private static final long serialVersionUID = -303214956474075109L;
 	private BookService bookService = new BookService();
 
 	public String findAllBook(HttpServletRequest request, HttpServletResponse response)

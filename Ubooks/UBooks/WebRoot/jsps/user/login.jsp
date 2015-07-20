@@ -31,8 +31,9 @@
   <body>
   	<div class="page-container">
            <h1>Login</h1>
+           <br/>
            <p style="color: red; font-weight: 900">${msg }</p>
-            <form action="<c:url value='/UserServlet'/>" method="post">
+            <form action="<c:url value='/jsps/user/UserServlet'/>" method="post">
             	<input type="hidden" name="method" value="login"/>	
                 <input type="text" name="username" class="username" value="${form.username }"/>
                 <input type="password" name="password" class="password" />
