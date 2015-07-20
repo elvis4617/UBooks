@@ -37,4 +37,8 @@ public class BookService {
 	public void deleteBook(Book book) {
 		bookDao.delete(book.getBid());
 	}
+
+	public void upload(Book book) {
+		bookDao.add(book);
+	}
 }
