@@ -33,6 +33,7 @@ public class UserServlet extends BaseServlet {
 		User form = CommonUtils.toBean(request.getParameterMap(), User.class);
 		
 		Map<String, String> errors = new HashMap<String, String>();
+		
 		String username = form.getUsername();
 		if(username == null || username.trim().isEmpty())
 			errors.put("username", "username cant be empty");
@@ -130,6 +131,12 @@ public class UserServlet extends BaseServlet {
 		User form = CommonUtils.toBean(request.getParameterMap(), User.class);
 		
 		Map<String, String> errors = new HashMap<String, String>();
+		
+		String verifyCode = form.getVcode();
+		String session_vcode =(String)request.getSession().getAttribute("session_vcode");
+		if(verifyCode == null || verifyCode.trim().isEmpty() || verifyCode.length() != 4 || !session_vcode.equalsIgnoreCase(form.getVcode()))
+			errors.put("vcode", "Verified code incorrect");
+		
 		String username = form.getUsername();
 		if(username == null || username.trim().isEmpty())
 			errors.put("username", "username cant be empty");

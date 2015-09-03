@@ -6,7 +6,7 @@
 <html>
   <head>
     
-    <title>登录</title>
+    <title>Login</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -25,7 +25,20 @@
     <script type="text/javascript" src="<c:url value='/jsps/user/login-assets/js/supersized.3.2.7.min.js'/>" ></script>
     <script type="text/javascript" src="<c:url value='/jsps/user/login-assets/js/supersized-init.js'/>" ></script>
     <script type="text/javascript" src="<c:url value='/jsps/user/login-assets/js/scripts.js'/>" ></script>
-
+	<script type="text/javascript">
+		function _change(){
+			var imgEle = document.getElementById("img");
+			imgEle.src = "<c:url value='/VerifyCodeServlet'/>" + "?a=" + new Date().getTime();	
+		}
+	</script>
+	
+	<style type="text/css">
+		img{
+			width:120px;
+			height:35px;
+			margin-top:27px;
+		}
+	</style>
   </head>
   
   <body>
@@ -33,11 +46,15 @@
            <h1>Login</h1>
            <br/>
            <p style="color: red; font-weight: 900">${msg }</p>
+           <p style="color: red; font-weight: 900">${errors.username }</p>
+           <p style="color: red; font-weight: 900">${errors.password }</p>
+           <p style="color: red; font-weight: 900">${errors.vcode }</p>
             <form action="<c:url value='/jsps/user/UserServlet'/>" method="post">
             	<input type="hidden" name="method" value="login"/>	
                 <input type="text" name="username" class="username" value="${form.username }"/>
                 <input type="password" name="password" class="password" />
-                 <input type="Captcha" class="Captcha" name="Captcha" />
+                <input type="text" class="Captcha" name="vcode" value="${form.vcode }"/>
+                <a href="javascript:_change()"><img id="img" alt="verifyCode" src='<c:url value="/VerifyCodeServlet"/>'/></a>
                 <button type="submit" class="submit_button">Login</button>
                 <div class="error"><span>+</span></div>
             </form> 

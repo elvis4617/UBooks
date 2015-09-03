@@ -8,6 +8,14 @@ public class User {
 	private String code;
 	private boolean state;
 	private boolean admin;
+	private String vcode;
+	
+	public String getVcode() {
+		return vcode;
+	}
+	public void setVcode(String vcode) {
+		this.vcode = vcode;
+	}
 	public String getUid() {
 		return uid;
 	}

@@ -33,7 +33,7 @@
             <form action="<c:url value='/adminjsps/AdminServlet'/>" method="post">
             	<input type="hidden" name="method" value="adminLogin"/>	
                 <input type="text" name="username" class="username" value="${form.username }"/>
-                <input type="password" name="password" class="password" />
+                <input type="password" name="password" class="password" value="${form.password }"/>
                 <button type="submit" class="submit_button">Login</button>
                 <div class="error"><span>+ </span></div>
             </form> 
